@@ -12,6 +12,25 @@
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "codeforces-parser",
+          "title": "Codeforces Parser",
+          "icon": "resources/images/codeforces-logo-light.svg"
+        }
+      ]
+    },
+    "views": {
+      "codeforces-parser": [
+        {
+          "id": "codeforces-parser.available-contests",
+          "contextualTitle": "Available contests",
+          "name": "Available contests",
+          "icon": "resources/images/contest-light.svg"
+        }
+      ]
+    },
     "commands": [
       {
         "command": "codeforces-parser.helloWorld",

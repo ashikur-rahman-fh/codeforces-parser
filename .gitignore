@@ -1,5 +1,9 @@
 out
+compiled
 dist
 node_modules
 .vscode-test/
 *.vsix
+
+# macOS
+.DS_Store
