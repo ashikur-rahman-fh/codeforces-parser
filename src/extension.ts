@@ -2,7 +2,9 @@ import * as vscode from "vscode";
 import { ContestTreeProvider, ContestNode } from "./contestTreeProvider";
 import * as parser from "./parser";
 
-export function activate(context: vscode.ExtensionContext) {
+import { CodeforcesService } from "./parser/codeforcesService";
+
+export async function activate(context: vscode.ExtensionContext) {
   vscode.commands.registerCommand("codeforces-parser.helloWorld", () => {
     vscode.window.showInformationMessage("Hello World from Codeforces Parser!");
   });
@@ -30,25 +32,28 @@ export function activate(context: vscode.ExtensionContext) {
     },
   ];
 
+  const codeforcesService = new CodeforcesService();
   const contestProvider = new ContestTreeProvider(contests);
   vscode.window.registerTreeDataProvider(
     "codeforces-parser.available-contests",
-    contestProvider
+    contestProvider,
   );
 
-	vscode.commands.registerCommand(
-		"codeforces-parser.refresh-contests",
-		() => {
-			vscode.window.showInformationMessage("Refreshing contests ...");
-		}
-	);
+  vscode.commands.registerCommand(
+    "codeforces-parser.refresh-contests",
+    async () => {
+      vscode.window.showInformationMessage("Refreshing contests ...");
+      const data = await codeforcesService.fetchContestsPage();
+      console.log("ashrahma", data);
+    },
+  );
 
   vscode.commands.registerCommand(
     "codeforces-parser.parse-contest",
     (contest: ContestNode) => {
       vscode.window.showInformationMessage("Parsing contest ...");
       console.log("Parsing contest: ", contest);
-    }
+    },
   );
 }
 
