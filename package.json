@@ -21,6 +21,12 @@
         }
       ]
     },
+    "viewsWelcome": [
+      {
+        "view": "codeforces-parser.available-contests",
+        "contents": "Please wait while we fetch the latest available contests for you."
+      }
+    ],
     "views": {
       "codeforces-parser": [
         {
@@ -33,6 +39,14 @@
     },
     "commands": [
       {
+        "command": "codeforces-parser.refresh-contests",
+        "title": "Refresh Contests",
+        "icon": {
+          "light": "resources/images/refresh-light.svg",
+          "dark": "resources/images/refresh-dark.svg"
+        }
+      },
+      {
         "command": "codeforces-parser.parse-contest",
         "title": "Parse Contest",
         "icon": {
@@ -42,6 +56,13 @@
       }
     ],
     "menus": {
+      "view/title": [
+        {
+          "command": "codeforces-parser.refresh-contests",
+          "when": "view == codeforces-parser.available-contests",
+          "group": "navigation"
+        }
+      ],
       "view/item/context": [
         {
           "command": "codeforces-parser.parse-contest",

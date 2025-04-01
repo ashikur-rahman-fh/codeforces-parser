@@ -36,6 +36,13 @@ export function activate(context: vscode.ExtensionContext) {
     contestProvider
   );
 
+	vscode.commands.registerCommand(
+		"codeforces-parser.refresh-contests",
+		() => {
+			vscode.window.showInformationMessage("Refreshing contests ...");
+		}
+	);
+
   vscode.commands.registerCommand(
     "codeforces-parser.parse-contest",
     (contest: ContestNode) => {
