@@ -33,10 +33,23 @@
     },
     "commands": [
       {
-        "command": "codeforces-parser.helloWorld",
-        "title": "Hello World"
+        "command": "codeforces-parser.parse-contest",
+        "title": "Parse Contest",
+        "icon": {
+          "light": "resources/images/download-light.svg",
+          "dark": "resources/images/download-dark.svg"
+        }
       }
-    ]
+    ],
+    "menus": {
+      "view/item/context": [
+        {
+          "command": "codeforces-parser.parse-contest",
+          "when": "view == codeforces-parser.available-contests",
+          "group": "inline"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
